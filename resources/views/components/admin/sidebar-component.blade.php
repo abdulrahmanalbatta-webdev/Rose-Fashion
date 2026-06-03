@@ -1,9 +1,9 @@
 <div class="section-menu-left">
     <div class="box-logo">
         <a href="{{ route('fashion.index') }}" id="site-logo-inner">
-            <img class="" id="logo_header" alt="" src="{{ asset('admin/images/logo/logo.png') }}"
-                data-light="images/logo/logo.png" data-dark="images/logo/logo.png">
-        </a>
+            <img src="{{ asset('admin/images/logo/logo.png') }}" style="width: 139px; height: 33px;" class=""
+                id="logo_header" alt="" {{-- data-light="{{ asset('admin/images/logo/logo.png') }}"
+                data-dark="{{ asset('admin/images/logo/logo.png') }}"> --}}> </a>
         <div class="button-show-hide">
             <i class="icon-menu-left"></i>
         </div>
@@ -23,14 +23,15 @@
         </div>
         <div class="center-item">
             <ul class="menu-list">
-                <li class="menu-item has-children">
+                <li class="menu-item has-children {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
                     <a href="javascript:void(0);"
                         class="menu-item-button
                     {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
                         <div class="icon"><i class="icon-layers"></i></div>
                         <div class="text">Category</div>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu"
+                        style="display: {{ request()->routeIs('admin.categories.*') ? 'block' : 'none' }}">
                         <li class="sub-menu-item">
                             <a href="{{ route('admin.categories.create') }}"
                                 class="{{ request()->routeIs('admin.categories.create') ? 'active' : '' }}">
@@ -45,34 +46,36 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item has-children">
+                <li class="menu-item has-children {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
                     <a href="javascript:void(0);"
                         class="menu-item-button {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
                         <div class="icon"><i class="icon-shopping-cart"></i></div>
                         <div class="text">Products</div>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu"
+                        style="display: {{ request()->routeIs('admin.products.*') ? 'block' : 'none' }}">
                         <li class="sub-menu-item">
                             <a href="{{ route('admin.products.create') }}"
-                                class="{{ request()->routeIs('admin.product.create') ? 'active' : '' }}">
+                                class="{{ request()->routeIs('admin.products.create') ? 'active' : '' }}">
                                 <div class="text">Add Product</div>
                             </a>
                         </li>
                         <li class="sub-menu-item">
                             <a href="{{ route('admin.products.index') }}"
-                                class="{{ request()->routeIs('admin.product.index') ? 'active' : '' }}">
+                                class="{{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
                                 <div class="text">Products</div>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item has-children">
+                <li class="menu-item has-children {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">
                     <a href="javascript:void(0);"
                         class="menu-item-button {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">
                         <div class="icon"><i class="icon-layers"></i></div>
                         <div class="text">Brand</div>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu"
+                        style="display: {{ request()->routeIs('admin.brands.*') ? 'block' : 'none' }}">
                         <li class="sub-menu-item">
                             <a href="{{ route('admin.brands.create') }}"
                                 class="{{ request()->routeIs('admin.brands.create') ? 'active' : '' }}">
@@ -87,13 +90,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item has-children">
+                <li class="menu-item has-children {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
                     <a href="javascript:void(0);"
                         class="menu-item-button {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
                         <div class="icon"><i class="icon-file-plus"></i></div>
                         <div class="text">Order</div>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu"
+                        style="display: {{ request()->routeIs('admin.orders.*') ? 'block' : 'none' }}">
                         <li class="sub-menu-item">
                             <a href="{{ route('admin.orders.index') }}" class="">
                                 <div class="text">Orders</div>

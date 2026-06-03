@@ -12,6 +12,11 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function inbox()
+    {
+        return view('admin.inbox');
+    }
+
     public function sliders()
     {
         return view('admin.slider');

@@ -52,14 +52,14 @@
                             <td>4</td>
                             <td class="pname">
                                 <div class="image">
-                                    <img src="1718066463.html" alt="" class="image">
+                                    <img src="" alt="" class="image">
                                 </div>
                                 <div class="name">
                                     <a href="#" class="body-title-2">Category4</a>
                                 </div>
                             </td>
                             <td>category4</td>
-                            <td><a href="#" target="_blank">2</a></td>
+                            <td><a href="" target="_blank">2</a></td>
                             <td>
                                 <div class="list-icon-function">
                                     <a href="#">

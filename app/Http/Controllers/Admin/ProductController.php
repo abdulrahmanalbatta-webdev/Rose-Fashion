@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,7 +21,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.add-product');
+        $categories = ["Category1", "Category2", "Category3", "Category4"];
+        $brands = ["Brand1", "Brand2", "Brand3", "Brand4"];
+        $stocks = ["InStock", "Out of Stock"];
+        $featured = ["No", "Yes"];
+        return view('admin.add-product', compact('categories', 'brands', 'stocks', 'featured'));
     }
 
     /**
@@ -28,7 +33,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->file('image')->store('products', 'custom') ?? '';
+
+        $images = [];
+
+        foreach ($request->file('gallery') as $img) {
+            $images[] = $img->store('products', 'custom') ?? '';
+        }
     }
 
     /**

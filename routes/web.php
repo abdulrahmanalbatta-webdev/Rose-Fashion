@@ -9,6 +9,7 @@ Route::name('fashion.')->group(function () {
     Route::get('/shop', [AppController::class, 'shop'])->name('shop');
     Route::get('/about', [AppController::class, 'about'])->name('about');
     Route::get('/contact', [AppController::class, 'contact'])->name('contact');
+    Route::post('/contact', [AppController::class, 'contact_data']);
     Route::get('/cart', [AppController::class, 'cart'])->name('cart');
     Route::get('/checkout', [AppController::class, 'checkout'])->name('checkout');
     Route::get('/order-confirmation', [AppController::class, 'order_confirmation'])->name('order_confirmation');

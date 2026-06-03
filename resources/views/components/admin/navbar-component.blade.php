@@ -3,8 +3,9 @@
         <div class="header-left">
             <a href="{{ asset('admin/index-2.html') }}">
                 <img class="" id="logo_header_mobile" alt="" src="{{ asset('admin/images/logo/logo.png') }}"
-                    data-light="images/logo/logo.png" data-dark="images/logo/logo.png" data-width="154px"
-                    data-height="52px" data-retina="images/logo/logo.png">
+                    data-light="{{ asset('admin/images/logo/logo.png') }}"
+                    data-dark="{{ asset('admin/images/logo/logo.png') }}" data-width="154px" data-height="52px"
+                    data-retina="{{ asset('admin/images/logo/logo.png') }}">
             </a>
             <div class="button-show-hide">
                 <i class="icon-menu-left"></i>
@@ -237,7 +238,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ asset('admin/#') }}" class="user-item">
+                            <a href="{{ route('admin.inbox') }}" class="user-item">
                                 <div class="icon">
                                     <i class="icon-mail"></i>
                                 </div>

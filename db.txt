@@ -1,0 +1,53 @@
+Database Analysis:
+
+DB Tables =>
+
+Users
+[id | name | email | password | type] => type of => [Customer, Employee, Admin]
+
+Categories
+[id | name]
+
+Brands
+[id | name]
+
+Products
+[id | name | short_description | description | regular_price | sale_price | SKU | quantity | stock | featured | category_id]
+
+Images
+[id | path | type [main, gallery] | imageable_id | imageable_type]
+
+Reviews
+[id | rating | comment | product_id | user_id | is_approved]
+
+Cart
+[id | user_id | product_id | price | quantity | total]
+
+Orders
+[id | user_id | total]
+
+Order Details
+[id | Order_id |  user_id | product_id | price | quantity | total]
+
+Payments
+[id | user_id  | order_id | total | payment_method | transaction_number]
+
+Testimonials
+[id | user_id | comment | is_approved]
+
+Sliders
+
+Coupes
+
+Settings
+
+- Notifications
+
+- roles
+[id | name]
+
+- permissions
+[id | name | code]
+
+- permission_role
+[id | permission_id | role_id]

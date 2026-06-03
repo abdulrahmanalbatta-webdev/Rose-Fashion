@@ -1,5 +1,5 @@
 body {
-    zoom: 90% !important;
+    /* zoom: 90% !important; */
 }
 
 #logo_header_mobile {
@@ -161,4 +161,1296 @@ body {
 .view-icon {
     width: 20px;
     margin: 0 auto;
+}
+
+.form-error-wrapper {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.form-error {
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    margin-top: 6px;
+    color: #e74c3c;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.is-invalid {
+    border-color: #e74c3c !important;
+    background: rgba(231, 76, 60, 0.05) !important;
+    padding-right: 36px !important;
+}
+
+/* .input-error-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e74c3c;
+    font-size: 16px;
+    pointer-events: none;
+} */
+
+@media (max-width: 768px) {
+    .form-error {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+.preview-card {
+    margin-top: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: 0.3s;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.preview-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.preview-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+}
+
+.file-name {
+    font-size: 12px;
+    color: #555;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+/* ============================================================
+   INBOX PAGE — متوافق مع نظام تصميم لوحة التحكم (Remos Style)
+   ============================================================ */
+
+/* ── متغيرات النظام (مستخرجة من style.css الأصلي) ── */
+:root {
+    --Main: #2275fc;
+    --White: #fff;
+    --Black: #111;
+    --Heading: #111;
+    --Body-Text: #575864;
+    --22-c-55-e: #22C55E;
+    --Style: #FF5200;
+    --Input: #ECF0F4;
+    --Icon: #CBD5E1;
+    --Note: #95989D;
+    --Text-Holder: #858B93;
+    --Stroke: #ECF0F4;
+    --bg-table: #f6f8fbcc;
+    --bg-table-1: #F7FAFC;
+    --backdrop: #F2F7FB;
+    --hv-item: #EDF1F5;
+    --Palette-Green-500: #22C55E;
+    --Palette-Blue-Gray-300: #CBD5E1;
+    --Palette-Red-500: #EF4444;
+    --Palette-Orange-400: #FB923C;
+}
+
+/* ============================================================
+   LAYOUT — تخطيط صفحة الـ Inbox داخل main-content
+   ============================================================ */
+
+.inbox-wrap {
+    display: flex;
+    gap: 0;
+    height: calc(100vh - 80px - 60px);
+    /* طرح الـ topbar والـ footer */
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--White);
+    box-shadow: 0px 4px 24px 2px rgba(20, 25, 38, 0.05);
+}
+
+/* ============================================================
+   INBOX SIDEBAR — العمود الأيسر (قائمة الإيميلات)
+   ============================================================ */
+
+.inbox-sidebar {
+    width: 320px;
+    min-width: 320px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--Stroke);
+    display: flex;
+    flex-direction: column;
+    background: var(--White);
+}
+
+/* رأس السايدبار */
+.inbox-sidebar-header {
+    padding: 20px 20px 0;
+    border-bottom: 1px solid var(--Stroke);
+}
+
+.inbox-sidebar-header .inbox-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.inbox-sidebar-header .inbox-title h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--Heading);
+    line-height: 22px;
+}
+
+/* شريط البحث داخل الـ Inbox */
+.inbox-search-bar {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.inbox-search-bar input {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--Heading);
+    background-color: var(--backdrop);
+    border: 1px solid var(--Input);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.inbox-search-bar input::placeholder {
+    color: var(--Text-Holder);
+    font-size: 13px;
+}
+
+.inbox-search-bar input:focus {
+    border-color: var(--Main);
+    background-color: var(--White);
+}
+
+.inbox-search-bar .search-icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--Icon);
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.inbox-search-bar input:focus~.search-icon {
+    color: var(--Main);
+}
+
+/* تبويبات الفلتر */
+.inbox-filter-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 0;
+}
+
+.inbox-filter-tab {
+    flex: 1;
+    padding: 10px 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--Note);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    outline: none;
+}
+
+.inbox-filter-tab:hover {
+    color: var(--Heading);
+}
+
+.inbox-filter-tab.active {
+    color: var(--Main);
+    border-bottom-color: var(--Main);
+}
+
+/* ============================================================
+   قائمة الإيميلات
+   ============================================================ */
+
+.email-list-scroll {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.email-list-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.email-list-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.email-list-scroll::-webkit-scrollbar-thumb {
+    background: var(--Icon);
+    border-radius: 10px;
+}
+
+/* صف الإيميل الواحد */
+.email-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--Stroke);
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.email-row:hover {
+    background-color: var(--hv-item);
+}
+
+.email-row.active {
+    background-color: rgba(34, 117, 252, 0.06);
+}
+
+.email-row.unread {
+    background-color: #fafcff;
+}
+
+/* نقطة الغير مقروء */
+.email-unread-dot {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--Main);
+    flex-shrink: 0;
+}
+
+/* أفاتار دائري بالحروف */
+.email-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--White);
+    flex-shrink: 0;
+}
+
+.email-avatar.color-1 {
+    background-color: var(--Main);
+}
+
+.email-avatar.color-2 {
+    background-color: #8b5cf6;
+}
+
+.email-avatar.color-3 {
+    background-color: var(--22-c-55-e);
+}
+
+.email-avatar.color-4 {
+    background-color: var(--Palette-Orange-400);
+}
+
+.email-avatar.color-5 {
+    background-color: var(--Palette-Red-500);
+}
+
+.email-avatar.color-6 {
+    background-color: #ec4899;
+}
+
+.email-avatar.color-7 {
+    background-color: #06b6d4;
+}
+
+/* بيانات الإيميل */
+.email-row-meta {
+    flex: 1;
+    min-width: 0;
+}
+
+.email-row-from {
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--Heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 18px;
+}
+
+.email-row-subject {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--Body-Text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+    line-height: 17px;
+}
+
+.email-row.unread .email-row-subject {
+    font-weight: 600;
+    color: var(--Heading);
+}
+
+.email-row-preview {
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    color: var(--Note);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 3px;
+    line-height: 15px;
+}
+
+/* الوقت والنجمة */
+.email-row-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.email-row-time {
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    color: var(--Note);
+    line-height: 15px;
+    white-space: nowrap;
+}
+
+.email-star-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--Icon);
+    transition: color 0.2s ease;
+    outline: none;
+}
+
+.email-star-btn:hover,
+.email-star-btn.starred {
+    color: #FFA800;
+}
+
+/* شارة عدد الرسائل */
+.inbox-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background-color: var(--Style);
+    color: var(--White);
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.inbox-badge.blue {
+    background-color: var(--Main);
+}
+
+.inbox-badge.green {
+    background-color: var(--22-c-55-e);
+}
+
+/* ============================================================
+   COMPOSE BUTTON — زر إنشاء رسالة جديدة
+   ============================================================ */
+
+.inbox-compose-btn {
+    margin: 16px;
+    padding: 12px 20px;
+    width: calc(100% - 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--White);
+    background-color: var(--Main);
+    border: 1px solid var(--Main);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    line-height: 20px;
+}
+
+.inbox-compose-btn i {
+    font-size: 18px;
+}
+
+.inbox-compose-btn:hover {
+    color: var(--Main);
+    background-color: var(--White);
+}
+
+/* ============================================================
+   FOLDERS NAV — روابط المجلدات
+   ============================================================ */
+
+.inbox-folders {
+    padding: 10px 12px;
+    border-top: 1px solid var(--Stroke);
+}
+
+.inbox-folders-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--Note);
+    padding: 0 8px 8px;
+    display: block;
+}
+
+.inbox-folder-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 8px;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--Body-Text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.inbox-folder-link i {
+    font-size: 17px;
+    color: var(--Icon);
+    transition: color 0.2s ease;
+    width: 20px;
+    text-align: center;
+}
+
+.inbox-folder-link:hover {
+    background-color: var(--hv-item);
+    color: var(--Heading);
+}
+
+.inbox-folder-link:hover i {
+    color: var(--Heading);
+}
+
+.inbox-folder-link.active {
+    background-color: rgba(34, 117, 252, 0.1);
+    color: var(--Main);
+}
+
+.inbox-folder-link.active i {
+    color: var(--Main);
+}
+
+.inbox-folder-count {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background-color: var(--Main);
+    color: var(--White);
+}
+
+.inbox-folder-count.gray {
+    background-color: var(--Icon);
+}
+
+/* ============================================================
+   EMAIL DETAIL PANE — جانب عرض تفاصيل الإيميل
+   ============================================================ */
+
+.email-detail-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--White);
+}
+
+/* شريط أدوات التفاصيل */
+.email-detail-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--Stroke);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.detail-tool-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--Body-Text);
+    background-color: var(--White);
+    border: 1px solid var(--Input);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    line-height: 1;
+}
+
+.detail-tool-btn i {
+    font-size: 16px;
+}
+
+.detail-tool-btn:hover {
+    background-color: var(--hv-item);
+    color: var(--Heading);
+    border-color: var(--Icon);
+}
+
+.detail-tool-btn.primary {
+    background-color: var(--Main);
+    color: var(--White);
+    border-color: var(--Main);
+    font-weight: 600;
+}
+
+.detail-tool-btn.primary:hover {
+    background-color: #1a65e8;
+    border-color: #1a65e8;
+}
+
+.detail-tool-btn.danger {
+    color: var(--Style);
+    border-color: rgba(255, 82, 0, 0.2);
+}
+
+.detail-tool-btn.danger:hover {
+    background-color: #FFF2ED;
+    border-color: var(--Style);
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--Stroke);
+    flex-shrink: 0;
+}
+
+.toolbar-spacer {
+    flex: 1;
+}
+
+/* منطقة محتوى الإيميل */
+.email-detail-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 36px;
+}
+
+.email-detail-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.email-detail-scroll::-webkit-scrollbar-thumb {
+    background: var(--Icon);
+    border-radius: 10px;
+}
+
+/* رأس الإيميل المفتوح */
+.email-detail-header {
+    margin-bottom: 28px;
+}
+
+.email-detail-subject {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--Heading);
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+
+.email-sender-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+}
+
+.sender-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--White);
+    flex-shrink: 0;
+}
+
+.sender-info .sender-name {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--Heading);
+    line-height: 20px;
+}
+
+.sender-info .sender-addr {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: var(--Note);
+    line-height: 16px;
+}
+
+.email-date-badge {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: var(--Note);
+}
+
+.email-date-badge i {
+    font-size: 14px;
+}
+
+.email-to-row {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: var(--Note);
+    margin-left: 58px;
+    margin-bottom: 24px;
+    line-height: 17px;
+}
+
+.email-to-row strong {
+    color: var(--Body-Text);
+}
+
+/* جسم الإيميل */
+.email-detail-body {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--Body-Text);
+    line-height: 1.85;
+}
+
+.email-detail-body p {
+    margin-bottom: 16px;
+    color: var(--Body-Text);
+}
+
+.email-detail-body .email-signature {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--Stroke);
+    color: var(--Note);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   ATTACHMENTS — المرفقات
+   ============================================================ */
+
+.email-attachments {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--Stroke);
+}
+
+.email-attachments-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--Note);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.email-attachments-title i {
+    font-size: 14px;
+}
+
+.attachment-chips-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.attachment-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--bg-table-1);
+    border: 1px solid var(--Input);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+}
+
+.attachment-chip:hover {
+    border-color: var(--Main);
+    box-shadow: 0 2px 8px rgba(34, 117, 252, 0.12);
+}
+
+.attachment-chip .att-icon {
+    font-size: 22px;
+    color: var(--Main);
+    flex-shrink: 0;
+}
+
+.attachment-chip .att-icon.pdf {
+    color: #EF4444;
+}
+
+.attachment-chip .att-icon.word {
+    color: var(--Main);
+}
+
+.attachment-chip .att-icon.img {
+    color: var(--22-c-55-e);
+}
+
+.attachment-chip .att-file-name {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--Heading);
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+.attachment-chip .att-file-size {
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    color: var(--Note);
+    line-height: 15px;
+}
+
+.attachment-chip .att-download {
+    font-size: 16px;
+    color: var(--Icon);
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+
+.attachment-chip:hover .att-download {
+    color: var(--Main);
+}
+
+/* ============================================================
+   REPLY BOX — صندوق الرد
+   ============================================================ */
+
+.email-reply-box {
+    margin: 0 36px 28px;
+    border: 1px solid var(--Input);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0px 4px 14px rgba(20, 25, 38, 0.05);
+    flex-shrink: 0;
+}
+
+.reply-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--bg-table-1);
+    border-bottom: 1px solid var(--Input);
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: var(--Note);
+}
+
+.reply-box-header i {
+    font-size: 15px;
+    color: var(--Main);
+}
+
+.reply-box-header strong {
+    color: var(--Heading);
+    font-size: 13px;
+}
+
+.reply-box-textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 14px 18px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--Heading);
+    background-color: var(--White);
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.reply-box-textarea::placeholder {
+    color: var(--Text-Holder);
+}
+
+.reply-box-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--bg-table-1);
+    border-top: 1px solid var(--Input);
+    flex-wrap: wrap;
+}
+
+.reply-send-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 22px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--White);
+    background-color: var(--Main);
+    border: 1px solid var(--Main);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    line-height: 1;
+}
+
+.reply-send-btn i {
+    font-size: 16px;
+}
+
+.reply-send-btn:hover {
+    color: var(--Main);
+    background-color: var(--White);
+}
+
+.reply-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--White);
+    border: 1px solid var(--Input);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--Body-Text);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.reply-action-btn:hover {
+    background-color: var(--hv-item);
+    color: var(--Heading);
+    border-color: var(--Icon);
+}
+
+/* ============================================================
+   COMPOSE MODAL — نافذة إنشاء رسالة
+   ============================================================ */
+
+.compose-modal {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 520px;
+    background: var(--White);
+    border-radius: 14px;
+    border: 1px solid var(--Input);
+    box-shadow: 0px 4px 24px 2px rgba(20, 25, 38, 0.12);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.compose-modal.open {
+    display: flex;
+}
+
+.compose-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    background-color: var(--Heading);
+    color: var(--White);
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.compose-modal-header i {
+    font-size: 16px;
+}
+
+.compose-close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--White);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    outline: none;
+}
+
+.compose-close-btn:hover {
+    opacity: 1;
+}
+
+.compose-field-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--Stroke);
+    padding: 0 16px;
+}
+
+.compose-field-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: var(--Note);
+    width: 44px;
+    flex-shrink: 0;
+}
+
+.compose-field-row input {
+    flex: 1;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 11px 8px !important;
+    font-size: 13px !important;
+    background: transparent !important;
+    color: var(--Heading);
+    outline: none;
+    box-shadow: none !important;
+}
+
+.compose-field-row input::placeholder {
+    color: var(--Text-Holder);
+}
+
+.compose-body {
+    padding: 14px 16px;
+    min-height: 180px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: var(--Heading);
+    line-height: 1.7;
+    outline: none;
+    overflow-y: auto;
+}
+
+.compose-body:empty::before {
+    content: attr(data-placeholder);
+    color: var(--Text-Holder);
+    pointer-events: none;
+}
+
+.compose-modal-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--bg-table-1);
+    border-top: 1px solid var(--Input);
+}
+
+.compose-send-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 22px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--White);
+    background-color: var(--Main);
+    border: 1px solid var(--Main);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.compose-send-btn:hover {
+    background-color: #1a65e8;
+    border-color: #1a65e8;
+}
+
+.compose-del-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--Style);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    outline: none;
+}
+
+.compose-del-btn:hover {
+    background-color: #FFF2ED;
+}
+
+/* ============================================================
+   حالة الفراغ (Empty State)
+   ============================================================ */
+
+.inbox-empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--Note);
+    padding: 40px;
+    text-align: center;
+}
+
+.inbox-empty-state i {
+    font-size: 64px;
+    color: var(--Icon);
+    opacity: 0.6;
+}
+
+.inbox-empty-state h6 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--Heading);
+}
+
+.inbox-empty-state p {
+    font-size: 13px;
+    color: var(--Note);
+    max-width: 240px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   DARK THEME — دعم الوضع الداكن
+   ============================================================ */
+
+.dark-theme .inbox-wrap {
+    background: var(--White);
+    box-shadow: 0px 4px 24px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .inbox-sidebar {
+    background: var(--White);
+    border-color: var(--Stroke);
+}
+
+.dark-theme .email-row.unread {
+    background-color: rgba(34, 117, 252, 0.04);
+}
+
+.dark-theme .email-row.active {
+    background-color: rgba(34, 117, 252, 0.1);
+}
+
+.dark-theme .inbox-search-bar input {
+    background-color: var(--backdrop);
+    border-color: var(--Input);
+    color: var(--Body-Text);
+}
+
+.dark-theme .compose-modal {
+    background: var(--White);
+    border-color: var(--Stroke);
+}
+
+.dark-theme .attachment-chip {
+    background: var(--bg-table-1);
+    border-color: var(--Input);
+}
+
+.dark-theme .email-reply-box {
+    border-color: var(--Input);
+}
+
+.dark-theme .reply-box-textarea {
+    background: var(--White);
+    color: var(--Body-Text);
+}
+
+.dark-theme .detail-tool-btn {
+    background: var(--White);
+    border-color: var(--Input);
+    color: var(--Body-Text);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991px) {
+    .inbox-sidebar {
+        width: 260px;
+        min-width: 260px;
+    }
+
+    .email-detail-scroll {
+        padding: 20px;
+    }
+
+    .email-reply-box {
+        margin: 0 20px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .inbox-wrap {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .inbox-sidebar {
+        width: 100%;
+        min-width: unset;
+        max-height: 320px;
+    }
+
+    .email-detail-pane {
+        height: calc(100vh - 320px - 80px);
+    }
+
+    .email-detail-scroll {
+        padding: 16px;
+    }
+
+    .email-reply-box {
+        margin: 0 16px 16px;
+    }
+
+    .email-detail-toolbar {
+        padding: 10px 16px;
+        gap: 6px;
+    }
+
+    .detail-tool-btn span {
+        display: none;
+    }
+
+    .compose-modal {
+        width: calc(100vw - 32px);
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .inbox-sidebar {
+        max-height: 280px;
+    }
 }

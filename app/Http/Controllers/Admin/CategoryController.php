@@ -28,7 +28,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:20'],
+            'image' => ['required', 'image', 'mimes:png,jpg']
+        ]);
+
+        // $path = rand() . "_" . time() . "_" . rand() . "." . $request->file('image')->getClientOriginalExtension();
+        // $target_file = public_path('uploads/');
+        // $request->file('image')->move($target_file, $path);
+
+        // $path = $request->file('image')->store('categories', 'public');
+        $path = $request->file('image')->store('categories', 'custom');
+
+        // dd($request->all());
+
+        return view('admin.categories', compact('path'));
     }
 
     /**

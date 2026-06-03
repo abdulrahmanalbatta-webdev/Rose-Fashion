@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AppController extends Controller
 {
@@ -26,6 +28,34 @@ class AppController extends Controller
     public function contact()
     {
         return view('website.contact');
+    }
+
+    public function contact_data(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'comment' => 'required',
+        ]);
+
+        // Anonymous Mail
+        // abdulrahmanalbatta.dev@gmail.com
+        // Mail::send('vendor.mail.test', [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'comment' => $request->comment
+        // ], function ($message) use ($request) {
+
+        //     $message->to("abdulrahmanalbatta.dev@gmail.com")
+        //         ->subject("New Contact Message")
+        //         ->replyTo($request->email);
+        // });
+
+        Mail::to('abdulrahmanalbatta.dev@gmail.com')->send(new ContactMail($request->name, $request->email, $request->phone, $request->comment));
+
+        dd("Mail Sent Successfully");
     }
 
     public function cart()

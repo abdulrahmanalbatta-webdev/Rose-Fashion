@@ -17,6 +17,9 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('admin/images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/sweetalert.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/custom.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@6/dist/dropzone.css">
+    </link>
+    @yield('css')
 </head>
 
 <body class="body">
@@ -157,6 +160,7 @@
             jQuery(window).on("resize", function() {});
         })(jQuery);
     </script>
+    @yield('js')
 </body>
 
 </html>
