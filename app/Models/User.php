@@ -29,4 +29,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class);
+    }
 }

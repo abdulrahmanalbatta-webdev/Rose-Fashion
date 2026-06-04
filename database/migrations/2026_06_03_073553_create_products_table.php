@@ -26,8 +26,8 @@ return new class extends Migration
             $table->unsignedInteger('quantity')->default(10);
             $table->integer('views_count')->default(0);
             $table->boolean('is_active')->default(true);
-            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('brand_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('brand_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

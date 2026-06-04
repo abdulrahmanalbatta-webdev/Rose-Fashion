@@ -10,4 +10,19 @@ class Order extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function order_details()
+    {
+        return $this->belongsTo(OrderDetails::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }
