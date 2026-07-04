@@ -17,7 +17,7 @@
         <section class="contact-us container">
             <div class="mw-930">
                 <div class="contact-us__form">
-                    <form name="contact-us-form" class="needs-validation" action="{{ route('fashion.contact') }}"
+                    <form name="contact-us-form" class="needs-validation" action="{{ route('website.contact') }}"
                         method="POST">
                         @csrf
                         <h3 class="mb-5">Get In Touch</h3>

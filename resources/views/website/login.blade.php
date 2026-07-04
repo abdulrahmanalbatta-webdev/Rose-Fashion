@@ -15,27 +15,34 @@
             <div class="tab-content pt-2" id="login_register_tab_content">
                 <div class="tab-pane fade show active" id="tab-item-login" role="tabpanel" aria-labelledby="login-tab">
                     <div class="login-form">
-                        <form method="POST" action="#" name="login-form" class="needs-validation" novalidate="">
+                        <form method="POST" action="{{ route('login') }}" name="login-form">
+                            @csrf
                             <div class="form-floating mb-3">
-                                <input class="form-control form-control_gray " name="email" value="" required=""
+                                <input class="form-control form-control_gray " name="email" value=""
                                     autocomplete="email" autofocus="">
                                 <label for="email">Email address *</label>
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             <div class="pb-3"></div>
 
                             <div class="form-floating mb-3">
                                 <input id="password" type="password" class="form-control form-control_gray "
-                                    name="password" required="" autocomplete="current-password">
+                                    name="password" autocomplete="current-password">
                                 <label for="customerPasswodInput">Password *</label>
+                                @error('password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             <button class="btn btn-primary w-100 text-uppercase" type="submit">Log In</button>
 
                             <div class="customer-option mt-4 text-center">
                                 <span class="text-secondary">No account yet?</span>
-                                <a href="{{ route('fashion.register') }}" class="btn-text js-show-register">Create
-                                    Account</a> | <a href="{{ route('fashion.my_account') }}"
+                                <a href="{{ route('register') }}" class="btn-text js-show-register">Create
+                                    Account</a> | <a href="{{ route('website.my_account') }}"
                                     class="btn-text js-show-register">My Account</a>
                             </div>
                         </form>

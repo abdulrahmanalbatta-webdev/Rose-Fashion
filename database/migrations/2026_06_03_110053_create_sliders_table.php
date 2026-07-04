@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('tagline')->nullable();
-            $table->string('title');
-            $table->string('subtitle')->nullable();
-            $table->string('link')->nullable();
+            $table->string('tag')->nullable(); // NEW ARRIVALS
+            $table->string('title_line1'); // Night Spring
+            $table->string('title_line2'); // Dresses
+            $table->string('button_text')->default('Shop Now');
+            $table->string('link_type')->nullable(); // category / product / external
+            $table->unsignedBigInteger('link_id')->nullable();
+            $table->string('external_url')->nullable();
+            $table->unsignedInteger('sort_order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

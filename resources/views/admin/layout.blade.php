@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html lang="{{ App::getLocale() }}" dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <title>@yield('title', env('APP_NAME')) | {{ env('APP_NAME') }}</title>
@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/animate.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/animation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/bootstrap.css') }}">
+    @if (App::getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.rtl.min.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.css') }}">
+    @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/font/fonts.css') }}">
@@ -19,6 +23,28 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/custom.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/dropzone@6/dist/dropzone.css">
     </link>
+    <style>
+        .fl-wrapper {
+            font-size: 16px !important;
+            min-width: 350px !important;
+        }
+
+        .fl-title {
+            font-size: 16px !important;
+            font-weight: 700 !important;
+        }
+
+        .fl-message {
+            font-size: 14px !important;
+        }
+
+        .fl-close {
+            font-size: 16px;
+        }
+    </style>
+    @if (App::getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('admin/css/rtl.css') }}">
+    @endif
     @yield('css')
 </head>
 
@@ -28,16 +54,12 @@
             <div class="layout-wrap">
                 <x-admin.sidebar-component />
                 <div class="section-content-right">
-
                     <x-admin.navbar-component />
                     <div class="main-content">
-
                         <div class="main-content-inner">
                             @yield('content')
                         </div>
-
-
-                        <x-admin.footer-component />
+                        {{-- <x-admin.footer-component /> --}}
                     </div>
 
                 </div>
@@ -51,6 +73,7 @@
     <script src="{{ asset('admin/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('admin/js/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ asset('admin/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         (function($) {
 

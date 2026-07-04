@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Trans;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Trans;
 
     protected $guarded = [];
 
@@ -46,5 +47,13 @@ class Product extends Model
     public function order_details()
     {
         return $this->hasMany(OrderDetails::class);
+    }
+
+    // Accessors
+    public function getImagePathAttribute()
+    {
+        if ($this->image->path) {
+            return asset('storage/' . $this->image->path);
+        }
     }
 }

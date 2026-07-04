@@ -2,12 +2,15 @@
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
 }
-.text-right{
+
+.text-right {
     text-align: right;
 }
+
 .pt-90 {
     padding-top: 90px !important;
 }
+
 .my-account__address-list {
     display: flex;
     gap: 1.625rem;
@@ -16,4 +19,31 @@
 .form-floating>.form-control,
 .form-floating>.form-select {
     height: 48px;
+}
+
+.form-error-wrapper {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.form-error-wrapper {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.form-error {
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    margin-top: 6px;
+    color: #e74c3c !important;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .form-error {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
 }

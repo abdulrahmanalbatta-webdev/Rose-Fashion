@@ -15,7 +15,7 @@
                                     <i class="icon-shopping-bag"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Total Orders</div>
+                                    <div class="body-text mb-2">{{ __('Total Orders') }}</div>
                                     <h4>3</h4>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                     <i class="icon-dollar-sign"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Total Amount</div>
+                                    <div class="body-text mb-2">{{ __('Total Amount') }}</div>
                                     <h4>481.34</h4>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <i class="icon-shopping-bag"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Pending Orders</div>
+                                    <div class="body-text mb-2">{{ __('Pending Orders') }}</div>
                                     <h4>3</h4>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                     <i class="icon-dollar-sign"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Pending Orders Amount</div>
+                                    <div class="body-text mb-2">{{ __('Pending Orders Amount') }}</div>
                                     <h4>481.34</h4>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                     <i class="icon-shopping-bag"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Delivered Orders</div>
+                                    <div class="body-text mb-2">{{ __('Delivered Orders') }}</div>
                                     <h4>0</h4>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                     <i class="icon-dollar-sign"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Delivered Orders Amount</div>
+                                    <div class="body-text mb-2">{{ __('Delivered Orders Amount') }}</div>
                                     <h4>0.00</h4>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                     <i class="icon-shopping-bag"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Canceled Orders</div>
+                                    <div class="body-text mb-2">{{ __('Canceled Orders') }}</div>
                                     <h4>0</h4>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                     <i class="icon-dollar-sign"></i>
                                 </div>
                                 <div>
-                                    <div class="body-text mb-2">Canceled Orders Amount</div>
+                                    <div class="body-text mb-2">{{ __('Canceled Orders Amount') }}</div>
                                     <h4>0.00</h4>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
 
             <div class="wg-box">
                 <div class="flex items-center justify-between">
-                    <h5>Earnings revenue</h5>
+                    <h5 class="mb-20">{{ __('Earnings revenue') }}</h5>
                     <div class="dropdown default">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -144,12 +144,12 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a href="{{ asset('admin/javascript:void(0);') }}">This
-                                    Week</a>
+                                <a href="{{ asset('admin/javascript:void(0);') }}">
+                                    {{ __('This Week') }}</a>
                             </li>
                             <li>
-                                <a href="{{ asset('admin/javascript:void(0);') }}">Last
-                                    Week</a>
+                                <a href="{{ asset('admin/javascript:void(0);') }}">
+                                    {{ __('Last Week') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -159,7 +159,7 @@
                         <div class="mb-2">
                             <div class="block-legend">
                                 <div class="dot t1"></div>
-                                <div class="text-tiny">Revenue</div>
+                                <div class="text-tiny">{{ __('Revenue') }}</div>
                             </div>
                         </div>
                         <div class="flex items-center gap10">
@@ -174,7 +174,7 @@
                         <div class="mb-2">
                             <div class="block-legend">
                                 <div class="dot t2"></div>
-                                <div class="text-tiny">Order</div>
+                                <div class="text-tiny">{{ __('Order') }}</div>
                             </div>
                         </div>
                         <div class="flex items-center gap10">
@@ -194,10 +194,10 @@
 
             <div class="wg-box">
                 <div class="flex items-center justify-between">
-                    <h5>Recent orders</h5>
+                    <h5 class="mb-20">{{ __('Recent orders') }}</h5>
                     <div class="dropdown default">
                         <a class="btn btn-secondary dropdown-toggle" href="{{ asset('admin/#') }}">
-                            <span class="view-all">View all</span>
+                            <span class="view-all">{{ __('View all') }}</span>
                         </a>
                     </div>
                 </div>
@@ -206,18 +206,18 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 80px">OrderNo</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Phone</th>
-                                    <th class="text-center">Subtotal</th>
-                                    <th class="text-center">Tax</th>
-                                    <th class="text-center">Total</th>
+                                    <th style="width: 80px">{{ __('OrderNo') }}</th>
+                                    <th class="text-center">{{ __('Name') }}</th>
+                                    <th class="text-center">{{ __('Phone') }}</th>
+                                    <th class="text-center">{{ __('Subtotal') }}</th>
+                                    <th class="text-center">{{ __('Tax') }}</th>
+                                    <th class="text-center">{{ __('Total') }}</th>
 
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Order Date</th>
-                                    <th class="text-center">Total Items</th>
-                                    <th class="text-center">Delivered On</th>
-                                    <th></th>
+                                    <th class="text-center">{{ __('Status') }}</th>
+                                    <th class="text-center">{{ __('Order Date') }}</th>
+                                    <th class="text-center">{{ __('Total Items') }}</th>
+                                    <th class="text-center">{{ __('Delivered On') }}</th>
+                                    <th class="text-center">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

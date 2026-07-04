@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\AlphaEnglish;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -24,20 +25,42 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:2', 'max:100', new AlphaEnglish],
-            // 'category_id' => ['required', 'exists:categories,id', new AlphaEnglish],
-            // 'brand_id' => ['required', 'exists:brands,id', new AlphaEnglish],
-            'short_description' => ['required', 'string', 'min:5', 'max:500', new AlphaEnglish],
-            'description' => ['required', 'string', 'min:20', 'max:255', new AlphaEnglish],
-            'image' => ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048', new AlphaEnglish],
-            'gallery' => ['required', 'array', new AlphaEnglish],
-            'gallery.*' => ['image', 'mimes:png,jpg,jpeg,webp', 'max:2048', new AlphaEnglish],
-            'regular_price' => ['required', 'numeric', 'min:0', new AlphaEnglish],
-            'sale_price' => ['required', 'numeric', 'gt:regular_price', new AlphaEnglish],
-            // 'SKU' => ['required', 'string', 'unique:products,SKU', new AlphaEnglish],
-            'quantity' => ['required', 'integer', 'min:0', new AlphaEnglish],
-            'stock' => ['required', 'in:in_stock,out_of_stock', new AlphaEnglish],
-            'featured' => ['required', 'boolean', new AlphaEnglish],
+            'name_en' => ['required', 'min:2', 'max:100', new AlphaEnglish],
+            'name_ar' => ['required', 'min:2', 'max:100'],
+
+            'category_id' => ['required', 'exists:categories,id'],
+            'brand_id' => ['required', 'exists:brands,id'],
+
+            'short_description_en' => ['required', 'string', 'min:5', 'max:500'],
+            'short_description_ar' => ['required', 'string', 'min:5', 'max:500'],
+
+            'description_en' => ['required', 'string', 'min:20', 'max:5000'],
+            'description_ar' => ['required', 'string', 'min:20', 'max:5000'],
+
+            'cost_price' => ['required', 'numeric', 'min:0'],
+
+            'image' => [
+                $this->isMethod('post') ? 'required' : 'nullable',
+                'image',
+                'mimes:png,jpg,jpeg,webp',
+                'max:2048'
+            ],
+
+            'gallery' => ['nullable', 'array'],
+            'gallery.*' => ['image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
+
+            'regular_price' => ['required', 'numeric', 'min:0'],
+            'sale_price' => ['nullable', 'numeric', 'lt:regular_price'],
+
+            'sku' => [
+                'required',
+                'string',
+                Rule::unique('products', 'sku')->ignore($this->route('product')),
+            ],
+
+            'quantity' => ['required', 'integer', 'min:0'],
+            'in_stock' => ['required', 'boolean'],
+            'featured' => ['required', 'boolean'],
         ];
     }
 

@@ -17,16 +17,6 @@ class AdminController extends Controller
         return view('admin.inbox');
     }
 
-    public function sliders()
-    {
-        return view('admin.slider');
-    }
-
-    public function add_slider()
-    {
-        return view('admin.add-slide');
-    }
-
     public function coupons()
     {
         return view('admin.coupons');

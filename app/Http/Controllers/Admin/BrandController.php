@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -12,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('admin.brands');
+        $brands = Brand::latest()->paginate(10);
+        return view('admin.brands.index', compact('brands'));
     }
 
     /**
@@ -20,7 +24,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.add-brand');
+        return view('admin.brands.create');
     }
 
     /**
@@ -28,7 +32,29 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_en' => ['required', 'min:2', 'max:30'],
+            'name_ar' => ['required', 'min:2', 'max:30'],
+            'image' => ['required', 'image', 'mimes:png,jpg']
+        ]);
+
+        $name = [
+            'en' => $request->name_en,
+            'ar' => $request->name_ar
+        ];
+
+        $brand = Brand::create([
+            'name' => json_encode($name),
+            'slug' => Str::slug($request->name_en)
+        ]);
+
+        $path = $request->file('image')->store('brands', 'public');
+        $brand->image()->create([
+            'path' => $path
+        ]);
+
+        flash()->success(__('Brand created successfully'));
+        return redirect()->route('admin.brands.index');
     }
 
     /**
@@ -42,24 +68,61 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Brand $brand)
     {
-        //
+        return view('admin.brands.edit', compact('brand'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'name_en' => ['required', 'min:2', 'max:30'],
+            'name_ar' => ['required', 'min:2', 'max:30'],
+            'image' => ['nullable', 'image', 'mimes:png,jpg']
+        ]);
+
+        $name = [
+            'en' => $request->name_en,
+            'ar' => $request->name_ar
+        ];
+
+        $brand->update([
+            'name' => json_encode($name),
+            'slug' => Str::slug($request->name_en)
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($brand->image?->path) {
+                Storage::disk('public')->delete($brand->image->path);
+            }
+
+            $path = $request->file('image')->store('brands', 'public');
+            $brand->image()->update([
+                'path' => $path
+            ]);
+        }
+
+
+        flash()->success(__('Brand updated successfully'));
+        return redirect()->route('admin.brands.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Brand $brand)
     {
-        //
+        if ($brand->image?->path) {
+            Storage::disk('public')->delete($brand->image->path);
+        }
+
+        $brand->delete();
+
+        flash()->success(__('Brand deleted successfully'));
+        return redirect()->route('admin.brands.index');
     }
 }

@@ -267,7 +267,7 @@
             </a>
 
             <div class="logo">
-                <a href="{{ route('fashion.index') }}">
+                <a href="{{ route('website.index') }}">
                     <img src="{{ asset('website/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
                 </a>
             </div>
@@ -388,7 +388,7 @@
         <div class="container">
             <div class="header-desk header-desk_type_1">
                 <div class="logo">
-                    <a href="{{ route('fashion.index') }}">
+                    <a href="{{ route('website.index') }}">
                         <img src="{{ asset('website/images/logo.png') }}" alt="Uomo"
                             class="logo__image d-block" />
                     </a>
@@ -397,23 +397,23 @@
                 <nav class="navigation">
                     <ul class="navigation__list list-unstyled d-flex">
                         <li class="navigation__item">
-                            <a href="{{ route('fashion.index') }}"
+                            <a href="{{ route('website.index') }}"
                                 class="navigation__link
-                            {{ request()->url() == route('fashion.index') ? 'active' : '' }}">Home</a>
+                            {{ request()->url() == route('website.index') ? 'active' : '' }}">Home</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="{{ route('fashion.shop') }}"
+                            <a href="{{ route('website.shop') }}"
                                 class="navigation__link
-                            {{ request()->url() == route('fashion.shop') ? 'active' : '' }}">Shop</a>
+                            {{ request()->url() == route('website.shop') ? 'active' : '' }}">Shop</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="{{ route('fashion.about') }}"
-                                class="navigation__link {{ request()->url() == route('fashion.about') ? 'active' : '' }}">About</a>
+                            <a href="{{ route('website.about') }}"
+                                class="navigation__link {{ request()->url() == route('website.about') ? 'active' : '' }}">About</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="{{ route('fashion.contact') }}"
+                            <a href="{{ route('website.contact') }}"
                                 class="navigation__link
-                            {{ request()->url() == route('fashion.contact') ? 'active' : '' }}">Contact</a>
+                            {{ request()->url() == route('website.contact') ? 'active' : '' }}">Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -471,22 +471,41 @@
                     </div>
 
                     <div class="header-tools__item hover-container">
-                        <a href="{{ route('fashion.login') }}" class="header-tools__item">
-                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_user" />
-                            </svg>
-                        </a>
+                        @if (auth()->check() && auth()->user()->type === 'customer')
+                            <a href="{{ route('website.my_account') }}" class="header-tools__item">
+                                {{ Auth::user()->name }}
+                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="#icon_user" />
+                                </svg>
+                            </a>
+                        @elseif (auth()->check() && (auth()->user()->type === 'employee' || auth()->user()->type === 'admin'))
+                            <a href="{{ route('admin.index') }}" class="header-tools__item">
+                                {{ Auth::user()->name }}
+                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="#icon_user" />
+                                </svg>
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="header-tools__item">
+                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="#icon_user" />
+                                </svg>
+                            </a>
+                        @endif
+
                     </div>
 
-                    <a href="{{ route('fashion.wishlist') }}" class="header-tools__item">
+                    <a href="{{ route('website.wishlist') }}" class="header-tools__item">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_heart" />
                         </svg>
                     </a>
 
-                    <a href="{{ route('fashion.cart') }}" class="header-tools__item header-tools__cart">
+                    <a href="{{ route('website.cart') }}" class="header-tools__item header-tools__cart">
                         <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_cart" />
@@ -632,8 +651,8 @@
             <div class="container d-md-flex align-items-center">
                 <span class="footer-copyright me-auto">©2024 Surfside Media</span>
                 <div class="footer-settings d-md-flex align-items-center">
-                    <a href="{{ route('fashion.privacy_policy') }}">Privacy Policy</a> &nbsp;|&nbsp; <a
-                        href="{{ route('fashion.terms_conditions') }}">Terms &amp;
+                    <a href="{{ route('website.privacy_policy') }}">Privacy Policy</a> &nbsp;|&nbsp; <a
+                        href="{{ route('website.terms_conditions') }}">Terms &amp;
                         Conditions</a>
                 </div>
             </div>
